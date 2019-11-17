@@ -1,5 +1,5 @@
 let mongoose = require('mongoose');
-let uuid = reuqire('uuid');
+let uuid = require('uuid');
 
 mongoose.Promise = global.Promise;
 
@@ -13,7 +13,7 @@ let studentSchema = mongoose.Schema({
 });
 
 let postSchema = mongoose.Schema({
-    id : {type : Number,
+    id : {type : String,
           required : true},
     title : {type: String},
     content: {type: String},
@@ -24,17 +24,64 @@ let postSchema = mongoose.Schema({
 
 let Student = mongoose.model( 'student', studentSchema);
 
-let Post = mongoose.model( 'post', postSchena);
+let Post = mongoose.model( 'post', postSchema);
 
 
 let postList = {
-    get : function(){
+    get : function() {
         return Post.find()
-                .then(posts => {
-                    return posts;
+                .then( list => {
+                    return list;
                 })
                 .catch(err => {
                     console.log(err);
+                    throw err;
+                });
+    },
+    auth : function(auth){
+        return Post.find({author : auth})
+                .then(list => {
+                    return list;
+                })
+                .catch(err => {
+                    console.log(err);
+                    throw err;
+                });
+    },
+    post : function(obj){
+        console.log(obj);
+        return Post.create(obj)
+                .then(elem => {
+                    return elem;
+                })
+                .catch(err => {
+                    throw err;
+                });
+    },
+    findId: function(sId){
+        return Post.find({id: sId})
+                .then( elem => {
+                    return elem
+                })
+                .catch( err => {
+                    throw err;
+                });
+    },
+    deleteId: function(sId){
+        return Post.remove({id: sId})
+                .then( elem => {
+                    return elem;
+                })
+                .catch( err => {
+                    throw err;
+                });
+    },
+    update: function(_id, obj){
+        return Post.update({id : _id}, {$set: obj})
+                .then( elem => {
+                    return elem;
+                })
+                .catch ( err => {
                     throw err;
                 });
     }

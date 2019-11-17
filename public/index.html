@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<hmtl>
+    <head>
+        <meta charset="utf-8">
+        <title>server</title>
+        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    </head>
+
+    <body>
+
+        <h1>Posts</h1>
+        <ul id = "Post">
+        </ul>
+
+
+        <form>
+            <legend>create a new post</legend>
+            <input type="text" placeholder="title" id="title">
+            <input type="text" placeholder="content" id="content">
+            <input type="text" placeholder="author" id="author">
+            <input type="text" placeholder="publishDate" id="publishDate">
+            <input type="submit" id="sb">
+        </form>
+
+        <form>
+            <legend>delete</legend>
+            <input type="text" placeholder="id" id="id">
+            <input type="submit" id="sbD">
+        </form>
+ 
+        <form>
+            <legend>update</legend>
+            <input type="text" placeholder="title" id="title2">
+            <input type="text" placeholder="content" id="content2">
+            <input type="text" placeholder="author" id="author2">
+            <input type="text" placeholder="publishDate" id="publishDate2">
+            <input type="text" placeholder="id" id="id2">
+            <input type="submit" id="sbU">
+        </form>       <!-- omg -->
+
+        <script
+          src="https://code.jquery.com/jquery-3.4.1.js"
+          integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+          crossorigin="anonymous">
+        </script>
+        <script src="./js/script.js"></script>
+
+    </body>
+</html>
